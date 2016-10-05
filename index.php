@@ -8,8 +8,16 @@
 	<meta name="robots" content="index, follow">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />        
 </head>
-<body style="text-align: left; background-color: #112244; color: #FFFFFF;">
-<div style="background-color: black; width: 600px; left: 100px;">
+<body style="text-align: left; background-color: #112244; color: #FFFFFF; font-family: Arial; font-size: 14px;">
+<div style="position: relative;
+  top: 0px;
+  width: 900px;
+  left: 50%;
+  margin-left: -450px;
+  margin-top: 0px;
+  background: transparent url('https://s-media-cache-ak0.pinimg.com/originals/7f/81/ce/7f81ce29a09f47eb1dcf030dbafa317f.jpg') no-repeat scroll center top;
+  padding: 20px;">
+  
 
 <?php
 //	header("Content-Type: text/html; charset=utf-8");
