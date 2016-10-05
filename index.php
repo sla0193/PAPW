@@ -26,6 +26,7 @@
 		echo "<ul><li>Číslo " . $i . "</li></ul>";
 	}
 ?>
+<p><img src="http://49.media.tumblr.com/7a92cb88e907df06e0569ab884d4067c/tumblr_nzek8grXXU1smshebo1_500.gif" /></p>
 </div>
 
 </body>
