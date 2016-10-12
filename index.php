@@ -15,7 +15,7 @@
   left: 50%;
   margin-left: -450px;
   margin-top: 0px;
-  background: transparent url('https://s-media-cache-ak0.pinimg.com/originals/7f/81/ce/7f81ce29a09f47eb1dcf030dbafa317f.jpg') no-repeat scroll center top;
+  background: transparent url('https://s-media-cache-ak0.pinimg.com/originals/7f/81/ce/7f81ce29a09f47eb1dcf030dbafa317f.jpg') repeat scroll center top;
   padding: 20px;">
 
 <form>
