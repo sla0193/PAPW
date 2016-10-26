@@ -6,18 +6,7 @@
 	<meta name="keywords" content="">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="robots" content="index, follow">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />   
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
-	$(document).ready(function(){
-		$("#s1").click(function(){
-			$(this).hide();
-		});
-		$("#show").click(function(){
-			$("#s1").show();
-		});
-	});
-</script>	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />        
 </head>
 <body style="text-align: left; background-color: #112244; color: #FFFFFF; font-family: Arial; font-size: 14px;">
 <div style="position: relative;
@@ -60,8 +49,7 @@
 	
 		
 	echo "<p>";
-	//Z nejakeho duvodu mi muj kod vypisuje Ostrava 2x ... jednou tucne a jednou normalne.
-	/*	for ($i = 0; $i < count($pieces); $i++){		//OR foreach ($pieces as $piece){
+		for ($i = 0; $i < count($pieces); $i++){		//OR foreach ($pieces as $piece){
 			if(strcmp($pieces[$i],"Ostrava") == 0){
 				echo "<b>".$pieces[$i]." </b>";
 			}if(strcmp($pieces[$i],"Ostrava.") == 0){
@@ -70,7 +58,7 @@
 					echo "<b>".$last[0]."</b>. ";
 					$last[0] = "neni";
 				}
-			}if(strcmp($pieces[$i],"Ostrava!") == 0){
+			}/*if(strcmp($pieces[$i],"Ostrava!") == 0){
 				$last = explode("!", $pieces[$i]);
 				if($last[0] == "Ostrava"){
 					echo "<b>".$last[0]."!</b> ";
@@ -80,32 +68,11 @@
 				if($last[0] == "Ostrava"){
 					echo "<b>".$last[0]."?</b> ";
 				}
-			}else{
+			}*/else{
 				echo $pieces[$i]." ";
 			}
 			
-		}*/
-		$ostrava = array("Ostrava", "Ostravě", "Ostravou"); 
-	
-	$j = 1;	//ve for se to stale nastavovalo na 1
-	for ($i=0; $i < count($pieces); $i++) {
-		$word = trim($pieces[$i], ". \t\n");
-		$word = str_replace(".", "", $word);
-		//nebo jen definovat nejake cislo, ktere se bude zvysovat o jedna a vzit jenom to prvni
-		//$cislo++ a misto id="s1" dát id="s $cislo "
-		
-		if (in_array($word, $ostrava)) {
-			if($j == 1){
-				$pieces[$i] = "<strong id=\"s1\">".$pieces[$i]."</strong>";
-				$j++;
-			}else{
-				$pieces[$i] = "<strong>".$pieces[$i]."</strong>";
-			}
-			
 		}
-	}
-	$text1_strong_ostrava = implode(" ", $pieces);
-	echo "<p>".$text1_strong_ostrava."</p>";
 	echo "<p>";
 	
 	/*
@@ -123,9 +90,7 @@
 		echo "</ul>";
 	}*/
 ?>
-<button id="show">Zobrazit zmizíkovanou Ostravu</button>
 <p><img src="http://49.media.tumblr.com/7a92cb88e907df06e0569ab884d4067c/tumblr_nzek8grXXU1smshebo1_500.gif" /></p>
-
 </div>
 
 </body>

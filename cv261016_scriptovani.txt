@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+//scriptovani na strane uzivatele
+<script> 
+$(document).ready(function(){
+    $("p").click(function(){	//funkce click ... udalost v tomto případě je kliknutí myši
+								//"p" je selektor ... neco jako id="nazev" v CSS ... smaže vše, co je v paragrafu <p></p>
+        $(this).hide();			//telo funkce function()
+								//this - to samé jako v javě... tento paragraf
+    });
+});
+</script>
+</head>
+<body>
+
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+
+</body>
+</html>
+
+//HIDE SHOW
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#p1").toggle();
+    });
+});
+</script>
+</head>
+<body>
+
+<button>Toggle between hiding and showing the paragraphs</button>
+
+<p id="p1">This is a paragraph with little content.</p>
+//díky id označím, co se bude skrývat
+<p>This is another small paragraph.</p>
+
+</body>
+</html>
