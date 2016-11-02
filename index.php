@@ -8,16 +8,45 @@
 	<meta name="robots" content="index, follow">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />   
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+<script src="http://gisak.vsb.cz/ruzicka/lib/leaflet/showplace.js"></script>
 <script>
 	$(document).ready(function(){
-		$("#s1").click(function(){
+/*		$("#s1").click(function(){
 			$(this).hide();
 		});
 		$("#show").click(function(){
 			$("#s1").show();
+		});*/
+		$("#par").hide();
+		$("#show").click(function(){
+			$("#par").show();
+		});
+		$("#s1").click(function(){
+			$("#par").show();
 		});
 	});
-</script>	
+</script>
+<script>
+	$(document).ready(function(){
+		
+		setMap('mapid');	//rekne, kde se bude mapa zobrazovat... v jakem divu
+		$("#mapid").hide();
+		
+		$("strong").click(function(){
+			
+			$("#mapid").show();
+			
+			var lat = $(this).attr("lat");	//this je to, na co jsem klikla
+			var lon = $(this).attr("lon");
+			var zoom = $(this).attr("zoom");
+			var text = $(this).attr("text");
+			
+			showPlace(lat, lon, zoom, text);
+		});
+	});
+	</script>	
 </head>
 <body style="text-align: left; background-color: #112244; color: #FFFFFF; font-family: Arial; font-size: 14px;">
 <div style="position: relative;
@@ -95,15 +124,21 @@
 		//$cislo++ a misto id="s1" dát id="s $cislo "
 		
 		if (in_array($word, $ostrava)) {
+			$pieces[$i] = "<strong id=\"s".$j."\" lat=\"49.83\" lon=\"18.17\" zoom=\"15\" text=\"Zde je <strong>Ostrava ".$j."</strong>\">".$pieces[$i]."</strong>";
+			$j++;
+		}
+		
+/*		if (in_array($word, $ostrava)) {
 			if($j == 1){
 				$pieces[$i] = "<strong id=\"s1\">".$pieces[$i]."</strong>";
 				$j++;
 			}else{
 				$pieces[$i] = "<strong>".$pieces[$i]."</strong>";
-			}
+			}*/
 			
-		}
+		
 	}
+	echo "Počet Ostrav ".($j-1);
 	$text1_strong_ostrava = implode(" ", $pieces);
 	echo "<p>".$text1_strong_ostrava."</p>";
 	echo "<p>";
@@ -123,10 +158,19 @@
 		echo "</ul>";
 	}*/
 ?>
-<button id="show">Zobrazit zmizíkovanou Ostravu</button>
+<div id="par"><p>A tenhle text se objeví, ehehehe pokud kliknes na první tučnou Ostravu. Kapiš?</p></div>
+
+<button id="show">Ukaž to, co právě zmizlo.</button>
+
+<div id="mapid" style="width: 600px; height: 400px;"></div>
+
 <p><img src="http://49.media.tumblr.com/7a92cb88e907df06e0569ab884d4067c/tumblr_nzek8grXXU1smshebo1_500.gif" /></p>
 
-</div>
 
+
+</div>
+<!--
+Zkusit dodelat, že když kliknu na jakoukoliv Ostravu, tak se objeví její div.
+-->
 </body>
 </html>
