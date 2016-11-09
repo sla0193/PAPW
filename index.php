@@ -76,6 +76,69 @@
 
 
 <?php
+	function connect($misto){
+		
+		if (isset($_GET['aid']) && is_numeric($_GET['aid'])) {
+			$aid = (int) $_GET['aid'];
+		} else {
+			$aid = 1;
+		}
+
+		
+		$mysqli = new mysqli('127.0.0.1', 'root', 'root', 'sla0193');
+
+		// KONTROLA PRIPOJENI K DB ALE NENI TREBA
+		if ($mysqli->connect_errno) {
+			
+			echo "Sorry, this website is experiencing problems.";
+
+			
+			echo "Error: Failed to make a MySQL connection, here is why: \n";
+			echo "Errno: " . $mysqli->connect_errno . "\n";	#jak u javy promenna.fce()
+			echo "Error: " . $mysqli->connect_error . "\n";
+			
+			
+			exit;
+		}
+
+		// SESTAVENI PRIKAZU
+		$sql = "SELECT * FROM mista WHERE nazev LIKE '%".$misto."%'";
+		if (!$result = $mysqli->query($sql)) {	//SPUSTENI DOTAZU ... ten vnitrek muzu dat pryc a vymazat ten zbytek
+			// Oh no! The query failed. 
+			echo "Sorry, the website is experiencing problems.";
+
+			echo "Error: Our query failed to execute and here is why: \n";
+			echo "Query: " . $sql . "\n";
+			echo "Errno: " . $mysqli->errno . "\n";
+			echo "Error: " . $mysqli->error . "\n";
+			exit;
+		}
+
+		if ($result->num_rows === 0) {
+			echo "We could not find a match for ID $aid, sorry about that. Please try again.";
+			exit;
+		}
+
+		$actor = $result->fetch_assoc();	//prectu prvni radek pouze
+		echo "Sometimes I see " . $actor['nazev'] . " " . $actor['lat'] . " on TV.";
+
+		$sql = "SELECT * FROM mista ORDER BY rand() LIMIT 5";
+		if (!$result = $mysqli->query($sql)) {
+			echo "Sorry, the website is experiencing problems.";
+			exit;
+		}
+
+		echo "<ul>\n";
+		while ($actor = $result->fetch_assoc()) {	//precteni vsech radku
+			echo "<li><a href='" . $_SERVER['SCRIPT_FILENAME'] . "?aid=" . $actor['id'] . "'>\n";
+			echo $actor['nazev'] . ' ' . $actor['lat'];
+			echo "</a></li>\n";
+		}
+		echo "</ul>\n";
+
+		$result->free();	//nepovinne ale dobre
+		$mysqli->close();	//nepovinne ale dobre
+	}
 	$cislo = $_REQUEST["pocet"];
 	$text = $_REQUEST["pismeno"];
 /*	echo "Zadane cislo: " . $cislo . "<br />Zadany text: " . $text . "<br />";	//cteni z formulare
@@ -157,6 +220,7 @@
 		}
 		echo "</ul>";
 	}*/
+	connect("Praha");
 ?>
 <div id="par"><p>A tenhle text se objeví, ehehehe pokud kliknes na první tučnou Ostravu. Kapiš?</p></div>
 
